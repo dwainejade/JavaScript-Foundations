@@ -8,6 +8,8 @@ let principle = 200000;
 let interest_rate = 0.05;
 let years = 30;
 
+
+
 // 🏡 Task 1.5: Simple Math
 /* To create a monthly mortgage rate calculator, we need to know the number of years in months and the monthly interest rate. 
 
@@ -63,7 +65,6 @@ function mortgageCalculator(principle, interest, years, creditScore) {
     let monthlyRate = principle * (numerator / denominator);
 
     return monthlyRate;
-
 }
 
 console.log(mortgageCalculator(300000, 0.06, 30, 800));
@@ -101,10 +102,18 @@ Then, add control flow within your function such that IF creditScore is above 74
 // */
 
 function variableInterestRate(principle, interest, years) {
-    for (let i = interest - .02; i < interest + .02; i++) {
+    for (let i = interest - 0.02; i < (interest + 0.02); i += 0.005) {
+        let name = 'Dwaine'
 
+        let adjustedInterest = i;
+        let monthlyInterestRate = adjustedInterest / 12;
+        let periods = years * 12;
+        let numerator = monthlyInterestRate * Math.pow((1 + monthlyInterestRate), periods);
+        let denominator = Math.pow((1 + monthlyInterestRate), periods) - 1;
 
-        console.log(`Dwaine, with an interest rate of ${i}, your monthly rate is ${monthlyRate}`);
+        let monthlyRate = principle * (numerator / denominator);
+
+        console.log(`${name}, with an interest rate of ${i.toFixed(2)}, your monthly rate is ${monthlyRate.toFixed(2)}`);
     }
 }
 variableInterestRate(200000, 0.04, 30);
